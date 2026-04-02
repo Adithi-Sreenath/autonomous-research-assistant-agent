@@ -1,0 +1,105 @@
+@import "tailwindcss";
+
+/* -----------------------------
+   1. DESIGN TOKENS
+------------------------------*/
+@theme {
+  /* Colors - matching React version exactly */
+  --color-background: oklch(0% 0 0);
+  --color-foreground: oklch(95% 0.05 282);
+  --color-card: oklch(3% 0 0);
+  --color-card-foreground: oklch(95% 0.05 282);
+  --color-popover: oklch(3% 0 0);
+  --color-popover-foreground: oklch(95% 0.05 282);
+  --color-primary: oklch(68% 0.28 300);
+  --color-primary-foreground: oklch(95% 0.05 282);
+  --color-secondary: oklch(8% 0 0);
+  --color-secondary-foreground: oklch(95% 0.05 282);
+  --color-muted: oklch(8% 0 0);
+  --color-muted-foreground: oklch(70% 0.08 258);
+  --color-accent: oklch(65% 0.28 326);
+  --color-accent-foreground: oklch(95% 0.05 282);
+  --color-destructive: oklch(60.2% 0.21 0);
+  --color-destructive-foreground: oklch(95% 0.05 282);
+  --color-border: oklch(68% 0.28 300);
+  --color-input: oklch(30% 0.13 282);
+  --color-ring: oklch(68% 0.28 300);
+  
+  /* Border radius */
+  --radius: 0rem;
+  --radius-lg: 0rem;
+  --radius-md: 0rem;
+  --radius-sm: 0rem;
+  
+  /* Font families */
+  --font-heading: "Orbitron", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  
+  /* Enhanced glow effects - matching the blob */
+  --glow-purple: 0 0 30px oklch(68% 0.28 300 / 0.6), 0 0 60px oklch(68% 0.28 300 / 0.4), 0 0 90px oklch(68% 0.28 300 / 0.2);
+  --glow-pink: 0 0 30px oklch(65% 0.28 326 / 0.5), 0 0 60px oklch(65% 0.28 326 / 0.3), 0 0 90px oklch(65% 0.28 326 / 0.15);
+  --glow-purple-intense: 0 0 20px oklch(68% 0.28 300), 0 0 40px oklch(68% 0.28 300 / 0.8), 0 0 60px oklch(68% 0.28 300 / 0.6), 0 0 80px oklch(68% 0.28 300 / 0.4);
+}
+
+/* -----------------------------
+   2. BASE STYLING
+------------------------------*/
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: 0.05em;
+}
+
+a {
+  color: var(--color-foreground);
+  text-decoration: none;
+}
+
+/* Neon glow for borders */
+input[type="text"],
+input[type="search"],
+textarea,
+button,
+.border,
+[class*="border-"] {
+  transition: box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+button:hover,
+button:focus {
+  box-shadow: 0 0 15px var(--color-border), 0 0 30px var(--color-border);
+}
+
+/* -----------------------------
+   3. CUSTOM UTILITIES
+------------------------------*/
+@utility glow-purple {
+  box-shadow: var(--glow-purple);
+}
+
+@utility glow-pink {
+  box-shadow: var(--glow-pink);
+}
+
+@utility glow-purple-intense {
+  box-shadow: var(--glow-purple-intense);
+}
+
+@utility text-glow {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+}
+
+@utility border-glow {
+  box-shadow: 0 0 15px currentColor, 0 0 30px currentColor, inset 0 0 15px currentColor;
+}
